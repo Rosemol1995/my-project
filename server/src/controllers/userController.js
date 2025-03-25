@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+const { hashPassword } = require("../utilities/passwordUtilities");
 
 // Get all users
 exports.getUsers = async (req, res) => {
@@ -16,7 +17,9 @@ exports.getUserById = async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
         if (!user) return res.status(404).json({ message: "User not found" });
-        res.status(200).json(user);
+        res.status(200
+            
+        ).json(user);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -26,7 +29,7 @@ exports.getUserById = async (req, res) => {
 exports.createUser = async (req, res) => {
     try {
         const { username, email, password, role } = req.body;
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await hashPassword(password);
         const newUser = new User({ username, email, password: hashedPassword, role });
         await newUser.save();
         res.status(201).json(newUser);
