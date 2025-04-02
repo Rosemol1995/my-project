@@ -1,4 +1,5 @@
-const Table = require("../models/Table");
+const Table = require("../Models/tableModel");
+
 
 // Create a new table
 exports.createTable = async (req, res) => {

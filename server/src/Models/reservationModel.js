@@ -1,3 +1,5 @@
+const { default: mongoose } = require("mongoose");
+
 const ReservationSchema = new mongoose.Schema({
     customer: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
     tableNumber: { type: Number, required: true },

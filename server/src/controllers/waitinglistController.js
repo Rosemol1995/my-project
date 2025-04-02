@@ -1,4 +1,5 @@
-const WaitingList = require("../models/WaitingList");
+const WaitingList = require("../Models/WaitingListModel");
+
 
 // Get all waiting list entries
 exports.getWaitingList = async (req, res) => {

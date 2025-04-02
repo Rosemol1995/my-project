@@ -1,4 +1,5 @@
-const User = require("../models/User");
+const User = require("../Models/UserModel");
+
 
 // Create a new staff member (Admin Only)
 exports.createStaff = async (req, res) => {

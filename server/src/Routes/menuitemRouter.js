@@ -1,12 +1,12 @@
 const { getMenuItems, createMenuItem, getMenuItemById, updateMenuItem, deleteMenuItem } = require('../controllers/menuitemController')
 
-const menuitemRouter = require('express').Router()
+const menuItemRouter = require('express').Router()
 
 
-menuitemRouter.post('/createMenuItem', createMenuItem)
-menuitemRouter.get('/getMenutem', getMenuItems)
-menuitemRouter.put('/updateMenuItem', updateMenuItem)
-menuitemRouter.delete('/deleteMenuItem',deleteMenuItem)
+menuItemRouter.post('/createMenuItem', createMenuItem)
+menuItemRouter.get('/getMenutem', getMenuItems)
+menuItemRouter.put('/updateMenuItem', updateMenuItem)
+menuItemRouter.delete('/deleteMenuItem',deleteMenuItem)
 
 
-module.exports = menuitemRouter
+module.exports = menuItemRouter

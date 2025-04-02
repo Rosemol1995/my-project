@@ -1,3 +1,4 @@
+const { default: mongoose } = require("mongoose");
 
 const WaitingListSchema = new mongoose.Schema({
     customer: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },

@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const User = require("../models/User");
+const User = require("../Models/UserModel");
+
 
 // Login function - Generates JWT and stores it in cookies
 exports.login = async (req, res) => {
