@@ -33,5 +33,4 @@ apiRouter.use('/register', registerCustomer)
 apiRouter.use('/logout',logout)
 
 
-
 module.exports = apiRouter

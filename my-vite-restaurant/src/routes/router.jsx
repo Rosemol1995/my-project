@@ -2,7 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import Login from "../components/shared/login";
 import Register from "../components/shared/register";
 import Customerlayout from "../layout/Customerlayout";
-import HomePage from "../pages/customer.jsx/HomePage";
+import HomePage from "../pages/customer/HomePage";
+import MenuPage from "../pages/customer/MenuPage";
 
 export const router = createBrowserRouter([
   {
@@ -23,7 +24,11 @@ export const router = createBrowserRouter([
     {
       path:"",
       element: <HomePage/>,
-    }
+    },
+    {
+      path:"menuPage",
+      element: <MenuPage/>,
+    },
   ]
  }
 ]);
