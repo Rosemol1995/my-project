@@ -1,6 +1,7 @@
 const User = require("../Models/UserModel");
 const jwt = require("jsonwebtoken");
 const { createToken } = require("../utilities/generateToken");
+const { hashPassword } = require("../utilities/passwordUtilities");
 
 // Register a new customer with confirm password
 exports.registerCustomer = async (req, res) => {
@@ -16,11 +17,12 @@ exports.registerCustomer = async (req, res) => {
         let user = await User.findOne({ email });
         if (user) return res.status(400).json({ message: "Email already registered" });
 
+        const hashedPassword = await hashPassword(password)
         // Create new user
         user = new User({
             name,
             email,
-            password,
+            password: hashedPassword,
             role: "customer",
             loyaltyPoints: 0
         });

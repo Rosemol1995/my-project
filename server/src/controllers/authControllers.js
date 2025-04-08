@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const User = require("../Models/UserModel");
+const { comparePassword } = require("../utilities/passwordUtilities");
 
 
 // Login function - Generates JWT and stores it in cookies
@@ -10,10 +11,12 @@ exports.login = async (req, res) => {
 
         // Find user by email
         const user = await User.findOne({ email });
+        console.log(user);
         if (!user) return res.status(400).json({ message: "User not found" });
 
         // Check password
-        const isMatch = await bcrypt.compare(password, user.password);
+        const isMatch = await comparePassword(password, user.password);
+        console.log(isMatch);
         if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
 
         // Generate JWT token
