@@ -8,6 +8,11 @@ import About from "../pages/customer/About";
 import Contact from "../pages/customer/Contact";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import StaffDashboard from "../components/Staff/staffDashboard";
+import ManageFoodItems from "../pages/admin/ManageFoodItems";
+import Adminlayout from "../layout/Adminlayout";
+import AdminMenu from "../pages/admin/AdminMenu";
+import ManageStaff from "../pages/admin/ManageStaff";
+import OrderManagement from "../pages/admin/OrderManagement";
 
 export const router = createBrowserRouter([
   {
@@ -42,7 +47,33 @@ export const router = createBrowserRouter([
   },
   {
     path:"/admin",
-    element:<AdminDashboard/>
+    element: <Adminlayout/>,
+    children:[
+      {
+        path:"",
+        element: <AdminDashboard/>,
+      },
+      {
+        path:"managefooditem",
+        element: <ManageFoodItems/>,
+      },
+      {
+        path:"menu",
+        element: <AdminMenu/>,
+      },
+      {
+        path:"manageFoodItems",
+        element: <ManageFoodItems/>,
+      },
+      {
+        path:"manageStaff",
+        element: <ManageStaff/>,
+      },
+      {
+        path:"manageOrder",
+        element: <OrderManagement/>
+      },
+    ]
   },
   {
     path:"/staff",

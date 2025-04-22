@@ -65,6 +65,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const categories = ["Starters", "Main Course", "Desserts", "Beverages"];
 
@@ -79,8 +80,9 @@ const menuItems = [
   { name: "Iced Tea", category: "Beverages" },
 ];
 
-export default function AdminDashboard() {
+const AdminDashboard = () =>{
   const [selectedCategory, setSelectedCategory] = useState("Starters");
+  const navigate = useNavigate()
 
   const filteredItems = menuItems.filter(
     (item) => item.category === selectedCategory
@@ -100,7 +102,8 @@ export default function AdminDashboard() {
             {/* Navigation Links */}
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
               <a
-                href="#"
+                href=""
+                onClick={()=>navigate("menu")}
                 className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300"
               >
                 Menu
@@ -247,3 +250,5 @@ export default function AdminDashboard() {
     </div>
   );
 }
+
+export default AdminDashboard
