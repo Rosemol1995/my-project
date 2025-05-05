@@ -13,6 +13,7 @@ import Adminlayout from "../layout/Adminlayout";
 import AdminMenu from "../pages/admin/AdminMenu";
 import ManageStaff from "../pages/admin/ManageStaff";
 import OrderManagement from "../pages/admin/OrderManagement";
+import ManageTable from "../pages/admin/TableManagement";
 
 export const router = createBrowserRouter([
   {
@@ -72,6 +73,10 @@ export const router = createBrowserRouter([
       {
         path:"manageOrder",
         element: <OrderManagement/>
+      },
+      {
+        path:"managetable",
+        element:<ManageTable/>,
       },
     ]
   },

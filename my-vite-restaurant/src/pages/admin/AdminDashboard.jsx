@@ -80,9 +80,10 @@ const menuItems = [
   { name: "Iced Tea", category: "Beverages" },
 ];
 
-const AdminDashboard = () =>{
+const AdminDashboard = () => {
   const [selectedCategory, setSelectedCategory] = useState("Starters");
-  const navigate = useNavigate()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const filteredItems = menuItems.filter(
     (item) => item.category === selectedCategory
@@ -103,19 +104,20 @@ const AdminDashboard = () =>{
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
               <a
                 href=""
-                onClick={()=>navigate("menu")}
+                onClick={() => navigate("")}
                 className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300"
               >
                 Menu
               </a>
               <a
-                href="#"
+                href=""
+                onClick={() => navigate("menu")}
                 className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300"
               >
                 Admin Menu Page
               </a>
               <a
-                href="#"
+                href=""
                 className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300"
               >
                 Settings
@@ -141,12 +143,13 @@ const AdminDashboard = () =>{
                 aria-expanded="false"
                 onClick={() => {
                   /* Handle mobile menu toggle here */
+                  setIsMobileMenuOpen(!isMobileMenuOpen);
                 }}
               >
                 <span className="sr-only">Open main menu</span>
                 {/* Icon when menu is closed */}
                 <svg
-                  className="block h-6 w-6"
+                  className={`${isMobileMenuOpen ? "hidden" : "block"} h-6 w-6`}
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -162,7 +165,7 @@ const AdminDashboard = () =>{
                 </svg>
                 {/* Icon when menu is open */}
                 <svg
-                  className="hidden h-6 w-6"
+                  className={`${isMobileMenuOpen ? "block" : "hidden"} h-6 w-6`}
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -182,36 +185,40 @@ const AdminDashboard = () =>{
         </div>
 
         {/* Mobile Menu */}
-        <div className="sm:hidden" id="mobile-menu">
-          <div className="pt-2 pb-3 space-y-1">
-            <a
-              href="#"
-              className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300"
-            >
-              Menu
-            </a>
-            <a
-              href="#"
-              className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300"
-            >
-              Admin Menu Page
-            </a>
-            <a
-              href="#"
-              className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300"
-            >
-              Settings
-            </a>
-            <button
-              onClick={() => {
-                /* Handle logout logic here */
-              }}
-              className="block w-full text-left pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-red-500 hover:text-red-700 hover:bg-red-50 hover:border-red-300"
-            >
-              Logout
-            </button>
+        {isMobileMenuOpen && (
+          <div className="sm:hidden" id="mobile-menu">
+            <div className="pt-2 pb-3 space-y-1">
+              <a
+                href=""
+                onClick={()=>navigate("")}
+                className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300"
+              >
+                Menu
+              </a>
+              <a
+                href=""
+                onClick={()=>navigate("menu")}
+                className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300"
+              >
+                Admin Menu Page
+              </a>
+              <a
+                href="#"
+                className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50 hover:border-gray-300"
+              >
+                Settings
+              </a>
+              <button
+                onClick={() => {
+                  /* Handle logout logic here */
+                }}
+                className="block w-full text-left pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-red-500 hover:text-red-700 hover:bg-red-50 hover:border-red-300"
+              >
+                Logout
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </nav>
 
       <div className="flex gap-4 mb-6 flex-wrap mt-4 p-6">
@@ -249,6 +256,6 @@ const AdminDashboard = () =>{
       </div>
     </div>
   );
-}
+};
 
-export default AdminDashboard
+export default AdminDashboard;
